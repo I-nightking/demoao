@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>首页</title>
+</head>
+<body>
+    <!-- top -->
+    <div class="top">
+        <!-- more -->
+        <div class="top_more">
+            <div class="top_title"><b>单片机</b></div>
+            <div class="top_title"><b>Android</b></div>
+            <div class="top_title"><b>Web</b></div>
+            <div class="top_title"><b>Python</b></div>
+        </div>
+    </div>
+    <!-- main -->
+    <div class="main">
+        <div class="container">
+            {% block main %}
+
+            {% for a in title %}
+            <!-- 模块title -->
+            <div class="main_top"><div style="padding: 5px 10px;font-size:24px;"><img src="/static/image/mcu.png" alt="" style="width: 32px;height:32px;margin-top: -4px;">&nbsp;{{ a.title }}</div></div>
+            <!-- 模块main -->
+            <div class="main_main">
+                {% for b in subtitle %}
+                {% ifequal b.androidTitle.title a.title %}
+                <div class="row main_main_content">
+                   
+                    <div class="col-md-3 col-xs-3"><div style="padding: 15px 10px;font-size:17px;color: #a1a1a1;">{{ b.title }}</div></div>
+                    
+                    <div class="col-md-9 col-xs-9">
+
+                        <div class="row">
+                            {% for c in mtext %} 
+                                {% ifequal c.androidSubtitle.title b.title %}  
+                                    <div class="col-md-3 a">                               
+                                        <div class="mcontent">                                    
+                                            <div class="content_title">{{ c.title }}</div>
+                                            <div class="content_explain">{{ c.subtitle }}</div>                                
+                                        </div>                        
+                                    </div>
+                                {% endifequal %}
+                            {% endfor %}
+
+                            {% for d in mfile %} 
+                            {% ifequal d.androidSubtitle.title b.title %}  
+                                <div class="col-md-3 a">                               
+                                    <div class="mcontent">                                    
+                                        <div class="content_title">{{ d.title }}</div>
+                                        <div class="content_explain">{{ d.subtitle }}</div>                                
+                                    </div>                        
+                                </div>
+                            {% endifequal %}
+                            {% endfor %}
+                        </div>
+                    </div> 
+                                   
+                </div>
+                <hr>
+                {% endifequal %}
+                {% endfor %}  
+            </div>
+           
+        <div class="container">
+         <hr>   
+        </div>  
+        
+        {% endfor %}
+    </div>
+    <div></div>
+
+    {% endblock main %}
+</body>
+</html>
