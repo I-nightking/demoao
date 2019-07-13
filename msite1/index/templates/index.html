@@ -26,7 +26,7 @@
 
             {% for a in title %}
             <!-- 模块title -->
-            <div class="main_top"><div style="padding: 5px 10px;font-size:24px;"><img src="/static/image/mcu.png" alt="" style="width: 32px;height:32px;margin-top: -4px;">&nbsp;{{ a.title }}</div></div>
+            <div class="main_top"><div style="padding: 5px 10px;font-size:24px;"><img src="/media/{{ a.images }}" alt="" style="width: 32px;height:32px;margin-top: -4px;">&nbsp;{{ a.title }}</div></div>
             <!-- 模块main -->
             <div class="main_main">
                 {% for b in subtitle %}
@@ -40,22 +40,26 @@
                         <div class="row">
                             {% for c in mtext %} 
                                 {% ifequal c.androidSubtitle.title b.title %}  
-                                    <div class="col-md-3 a">                               
+                                    <div class="col-md-3 a">  
+                                        <a href="/content/{{ c.title }}/">                         
                                         <div class="mcontent">                                    
                                             <div class="content_title">{{ c.title }}</div>
                                             <div class="content_explain">{{ c.subtitle }}</div>                                
-                                        </div>                        
+                                        </div>  
+                                        </a>                      
                                     </div>
                                 {% endifequal %}
                             {% endfor %}
 
                             {% for d in mfile %} 
                             {% ifequal d.androidSubtitle.title b.title %}  
-                                <div class="col-md-3 a">                               
+                                <div class="col-md-3 a">  
+                                    <a href="/media/{{ d.indexFile }}">                             
                                     <div class="mcontent">                                    
                                         <div class="content_title">{{ d.title }}</div>
                                         <div class="content_explain">{{ d.subtitle }}</div>                                
-                                    </div>                        
+                                    </div>      
+                                    </a>                  
                                 </div>
                             {% endifequal %}
                             {% endfor %}

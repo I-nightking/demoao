@@ -9,5 +9,6 @@ def index(request):
     mfile = AndroidFile.objects.all()           
     return render(request,'index.html',{"title":title,"subtitle":subtitle,"mtext":mtext,"mfile":mfile})
 
-def content(request):
-    return render(request,'content.html')
+def content(request,mtitle):
+    mdata = AndroidText.objects.get(title=mtitle)
+    return render(request,'content.html',{"content":mdata})
